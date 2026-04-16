@@ -1,0 +1,75 @@
+[
+    {
+        "super_metric_type": "CLARITY",
+        "section_index": 3,
+        "metrics": [
+            {
+                "metric": {
+                    "metric_type": "CONCISENESS",
+                    "score_label": "FAIR"
+                },
+                "sub_metrics": {
+                    "is_core_idea_presented": true,
+                    "core_idea": "積極的にコミュニケーションを取り、定期的なミーティングや朝会に参加し、疑問があれば質問することが大切。",
+                    "filter_words": [],
+                    "strong_words": [],
+                    "sentence_count": 1,
+                    "filter_words_count": 0,
+                    "strong_words_count": 0,
+                    "filter_words_frequency": 0.0,
+                    "strong_words_frequency": 0.0
+                }
+            },
+            {
+                "metric": {
+                    "metric_type": "LOGICAL_STRUCTURE",
+                    "score_label": "FAIR"
+                },
+                "sub_metrics": {
+                    "has_logical_structure": true,
+                    "logical_structure_type": "Goal-Means",
+                    "logical_structure_markup": "<goal>弊社のチーム文化に早く馴染むために何かアドバイスがあれば教えていただけますか。</goal> <means>積極的にコミュニケーションを取ることが一番ですね。定期的なミーティングや朝会への参加、そして疑問があれば遠慮なく質問することをお勧めします。</means>",
+                    "uses_popular_framework": false,
+                    "framework_name": "",
+                    "framework_markup": ""
+                }
+            },
+            {
+                "metric": {
+                    "metric_type": "AUDIENCE_APPROPRIATENESS",
+                    "score_label": "GOOD"
+                },
+                "sub_metrics": {
+                    "terminology_appropriateness": true,
+                    "unappropriate_terms": []
+                }
+            }
+        ]
+    },
+    {
+        "super_metric_type": "ENGAGEMENT",
+        "section_index": 0,
+        "metrics": [
+            {
+                "metric": {
+                    "metric_type": "ACTIVE_LISTENING",
+                    "score_label": "GOOD"
+                },
+                "sub_metrics": {
+                    "addressing_the_question": true,
+                    "clarifying_questions": false
+                }
+            },
+            {
+                "metric": {
+                    "metric_type": "COMPANY_RESEARCH",
+                    "score_label": "GOOD"
+                },
+                "sub_metrics": {
+                    "has_done_research": true,
+                    "company_details_mentioned": []
+                }
+            }
+        ]
+    }
+]

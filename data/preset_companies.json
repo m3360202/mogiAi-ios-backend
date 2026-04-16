@@ -1,0 +1,72 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "created_at": "2025-01-30",
+    "description": "日本IT企業の公開情報に基づく手動整理データ",
+    "legal_notice": "本データは企業の公開情報（公式ウェブサイト、公開された採用情報など）を参考に手動で整理したものです。Webスクレイピングは使用していません。",
+    "data_source": [
+      "企業公式ウェブサイト",
+      "公開された採用情報（参考のみ）",
+      "手動整理"
+    ]
+  },
+  "companies": [
+    {
+      "company_name": "楽天株式会社",
+      "company_website": "https://corp.rakuten.co.jp",
+      "company_description": "日本最大級のインターネットサービス企業。EC、金融、モバイル、旅行など多角的な事業を展開。",
+      "industry": "インターネットサービス",
+      "headquarters": "東京都世田谷区",
+      "founded": "1997年",
+      "positions": [
+        {
+          "position_title": "バックエンドエンジニア",
+          "position_description": "大規模システムの設計・開発・運用。マイクロサービスアーキテクチャの構築。",
+          "required_skills": ["Java", "Kotlin", "Spring Boot", "Docker", "Kubernetes", "AWS"],
+          "interview_stages": ["書類選考", "技術面接（1次）", "技術面接（2次）", "最終面接"],
+          "typical_questions": [
+            "なぜ楽天で働きたいのか？",
+            "大規模システムでの経験について教えてください",
+            "マイクロサービスアーキテクチャの設計について説明してください"
+          ]
+        },
+        {
+          "position_title": "フロントエンドエンジニア",
+          "position_description": "ユーザー向けWebアプリケーションの開発。React/Vue.jsを使用したSPA開発。",
+          "required_skills": ["JavaScript", "TypeScript", "React", "Vue.js", "Next.js", "Webpack"],
+          "interview_stages": ["書類選考", "技術面接", "コーディングテスト", "最終面接"],
+          "typical_questions": [
+            "ReactとVue.jsの違いについて説明してください",
+            "パフォーマンス最適化の経験について教えてください",
+            "アクセシビリティを考慮した開発経験はありますか？"
+          ]
+        }
+      ]
+    },
+    {
+      "company_name": "メルカリ株式会社",
+      "company_website": "https://about.mercari.com",
+      "company_description": "フリマアプリ「メルカリ」を運営するスタートアップ。世界中で展開するマーケットプレイス事業。",
+      "industry": "EC・マーケットプレイス",
+      "headquarters": "東京都港区",
+      "founded": "2013年",
+      "positions": [
+        {
+          "position_title": "バックエンドエンジニア",
+          "position_description": "Go言語を使用した高負荷対応システムの開発。マイクロサービスアーキテクチャ。",
+          "required_skills": ["Go", "gRPC", "Kubernetes", "AWS", "PostgreSQL", "Redis"],
+          "interview_stages": ["書類選考", "技術面接（1次）", "技術面接（2次）", "最終面接"],
+          "typical_questions": [
+            "Go言語を選ぶ理由について説明してください",
+            "高負荷システムの設計経験について教えてください",
+            "マイクロサービス間の通信方式について説明してください"
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+
+
+

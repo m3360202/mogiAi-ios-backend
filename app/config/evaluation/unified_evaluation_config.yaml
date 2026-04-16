@@ -1,0 +1,212 @@
+# 统一评估配置 - 一次性LLM调用完成所有分析
+# Unified Evaluation Config - Single LLM Call for All Analysis
+
+version: "1.0"
+name: "unified_evaluation"
+description: "合并视觉评测、语气分析和反馈生成为一次LLM调用"
+
+# 模型配置
+model:
+  provider: "openai"  # openai, deepseek, anthropic
+  model_name: "gpt-4o"  # 使用GPT-4o Vision支持图片输入
+  temperature: 0.3
+  max_tokens: 4000  # 增加token以支持完整输出
+
+# 输入数据
+inputs:
+  video_frames:
+    count: 6  # 提取的视频帧数
+    resolution: "320x240"  # 分辨率
+    format: "base64"
+  
+  transcript:
+    required: true
+    description: "用户回答的文本转录"
+  
+  audio_features:
+    optional: true
+    fields:
+      - speaking_rate
+      - average_volume
+      - pitch_variation
+  
+  previous_scores:
+    optional: true
+    description: "上一次测试的得分（7天内）"
+    dimensions:
+      - clarity
+      - evidence
+      - impact
+      - engagement
+      - verbal_performance
+      - visual_performance
+
+# 输出结构
+output_structure:
+  # 视觉表现分析
+  visual_analysis:
+    face_visibility:
+      description: "面部可见性分析"
+      score_label: "Good/Fair/Poor/Critical"
+      metadata:
+        - face_frames_count
+        - total_frames
+        - face_off_screen_detected
+        - bad_habit_detected
+        - bad_habit_details
+        - smile_detected
+    
+    eye_contact:
+      description: "眼神接触分析"
+      score_label: "Good/Fair/Poor"
+    
+    facial_expression:
+      description: "面部表情分析"
+      score_label: "Good/Fair/Poor"
+    
+    body_posture:
+      description: "姿态分析"
+      score_label: "Good/Fair/Poor"
+    
+    appearance:
+      description: "外观分析"
+      score_label: "Good/Fair/Poor"
+  
+  # 语音表现分析
+  voice_analysis:
+    speed:
+      description: "语速分析"
+      score_label: "Good/Fair/Poor"
+    
+    tone:
+      description: "语调分析"
+      score_label: "Good/Fair/Poor"
+    
+    volume:
+      description: "音量分析"
+      score_label: "Good/Fair/Poor"
+    
+    pronunciation:
+      description: "发音清晰度分析（包含咳嗽、咬字不清等）"
+      score_label: "Good/Fair/Poor"
+    
+    pause:
+      description: "停顿分析（包含结巴、犹豫等）"
+      score_label: "Good/Fair/Poor"
+  
+  # 语气分析（基于文本和音频特征）
+  tone_analysis:
+    emotional_expression:
+      description: "情感表达"
+      score: "0-100"
+    
+    engagement_level:
+      description: "参与度"
+      score: "0-100"
+  
+  # 反馈生成（6个维度）
+  feedback_generation:
+    dimensions:
+      - name: clarity
+        brief_feedback: "20-30字一句话点评"
+        detailed_feedback: "详细评价和改进建议"
+        score: "0-100"
+        previous_score: "可选，用于对比"
+      
+      - name: evidence
+        brief_feedback: "20-30字一句话点评"
+        detailed_feedback: "详细评价和改进建议"
+        score: "0-100"
+        previous_score: "可选，用于对比"
+      
+      - name: impact
+        brief_feedback: "20-30字一句话点评"
+        detailed_feedback: "详细评价和改进建议"
+        score: "0-100"
+        previous_score: "可选，用于对比"
+      
+      - name: engagement
+        brief_feedback: "20-30字一句话点评"
+        detailed_feedback: "详细评价和改进建议"
+        score: "0-100"
+        previous_score: "可选，用于对比"
+      
+      - name: verbal_performance
+        brief_feedback: "20-30字一句话点评"
+        detailed_feedback: "详细评价和改进建议"
+        score: "0-100"
+        previous_score: "可选，用于对比"
+      
+      - name: visual_performance
+        brief_feedback: "20-30字一句话点评"
+        detailed_feedback: "详细评价和改进建议"
+        score: "0-100"
+        previous_score: "可选，用于对比"
+
+# Prompt模板配置
+prompt_templates:
+  system_message_path: "app/config/prompts/evaluation/v3/prompt_unified_evaluation_system_msg_{language}.md"
+  user_message_path: "app/config/prompts/evaluation/v3/prompt_unified_evaluation_user_msg_{language}.md"
+
+# 输出格式
+output_format:
+  type: "json"
+  schema:
+    visual_analysis: "object"
+    voice_analysis: "object"
+    tone_analysis: "object"
+    feedback:
+      type: "object"
+      properties:
+        clarity: "object"
+        evidence: "object"
+        impact: "object"
+        engagement: "object"
+        verbal_performance: "object"
+        visual_performance: "object"
+
+# 处理规则
+processing_rules:
+  # 视觉分析规则
+  visual_rules:
+    face_detection:
+      critical_threshold: 0.1  # 如果<10%的帧有人脸，判定为Critical
+      warning_message: "【严重警告：未检测到人脸】"
+    
+    bad_habits:
+      detection: true
+      warning_message: "【注意：检测到不当行为】"
+      behaviors:
+        - "picking nose"
+        - "touching face excessively"
+        - "scratching ears"
+        - "eating/drinking"
+        - "yawning"
+        - "distracted behavior"
+  
+  # 语音分析规则
+  voice_rules:
+    critical_issues:
+      - "coughing"
+      - "unclear pronunciation"
+      - "throat clearing"
+      - "stuttering"
+      - "voice breaks"
+      - "unstable volume"
+  
+  # 反馈生成规则
+  feedback_rules:
+    high_score_threshold: 75  # 超过75分使用褒义语气
+    progress_comparison: true  # 启用与上次得分对比
+    comparison_window_days: 7  # 对比窗口：7天
+    brief_feedback_length: "20-30字"
+    detailed_feedback_structure:
+      - "🔸 详细评价："
+      - "💡 改进建议："
+
+# 性能优化
+optimization:
+  parallel_processing: false  # 合并后不需要并行
+  caching: true  # 启用缓存
+  timeout: 60  # 超时时间（秒）
+

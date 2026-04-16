@@ -1,0 +1,14 @@
+{
+  "non_visual_model_provider": "deepseek",
+  "providers": {
+    "openai": {
+      "model": "gpt-4o-mini",
+      "base_url": null
+    },
+    "deepseek": {
+      "model": "deepseek-chat",
+      "base_url": "https://api.deepseek.com"
+    }
+  }
+}
+

@@ -1,0 +1,425 @@
+{
+    "strategies": [
+        {
+            "strategy_id": "strategy_stream_fast",
+            "name": "stream-fast-4text-2nonverbal",
+            "description": "Stream fast strategy: 4 text dimensions via LLM (mini), verbal/visual via nonverbal score labels",
+            "super_metrics": [
+                {
+                    "type": "CLARITY",
+                    "description": "Evaluates how clear and understandable the candidate's responses are",
+                    "weight": 0.3,
+                    "metrics": [
+                        {
+                            "type": "LOGICAL_STRUCTURE",
+                            "description": "Assesses the logical flow and organization of the response",
+                            "weight": 1.0,
+                            "model": "gpt-4o-mini",
+                            "eval_system_prompt_path": "app/config/prompts/evaluation/v1/prompt_logical_structure_eval_system_msg.md"
+                        }
+                    ]
+                },
+                {
+                    "type": "EVIDENCE",
+                    "description": "Evaluates the quality and relevance of evidence provided",
+                    "weight": 0.3,
+                    "metrics": [
+                        {
+                            "type": "EVIDENCE",
+                            "description": "Assesses the relevance and strength of evidence provided in responses",
+                            "weight": 1.0,
+                            "model": "gpt-4o-mini",
+                            "eval_system_prompt_path": "app/config/prompts/evaluation/v1/prompt_evidence_eval_system_msg.md"
+                        }
+                    ]
+                },
+                {
+                    "type": "IMPACT",
+                    "description": "Evaluates the candidate's focus on delivering impactful results",
+                    "weight": 0.1,
+                    "metrics": [
+                        {
+                            "type": "QUANTIFIABLE_RESULTS",
+                            "description": "Measures the emphasis on delivering measurable and quantifiable outcomes",
+                            "weight": 1.0,
+                            "model": "gpt-4o-mini",
+                            "eval_system_prompt_path": "app/config/prompts/evaluation/v1/prompt_quantifiable_results_eval_system_msg.md"
+                        }
+                    ]
+                },
+                {
+                    "type": "ENGAGEMENT",
+                    "description": "Evaluates the candidate's active engagement and listening skills",
+                    "weight": 0.1,
+                    "metrics": [
+                        {
+                            "type": "ACTIVE_LISTENING",
+                            "description": "Assesses the candidate's ability to actively listen and respond appropriately",
+                            "weight": 1.0,
+                            "model": "gpt-4o-mini",
+                            "eval_system_prompt_path": "app/config/prompts/evaluation/v1/prompt_active_listening_eval_system_msg.md"
+                        }
+                    ]
+                },
+                {
+                    "type": "VERBAL_PERFORMANCE",
+                    "description": "Evaluates the candidate's verbal communication skills (derived from nonverbal score labels)",
+                    "weight": 0.1,
+                    "metrics": [
+                        {
+                            "type": "PAUSE",
+                            "description": "Evaluates the candidate's use of pauses and fillers (derived)",
+                            "weight": 1.0,
+                            "model": "gpt-4o"
+                        }
+                    ]
+                },
+                {
+                    "type": "VISUAL_PERFORMANCE",
+                    "description": "Evaluates the candidate's visual presentation and non-verbal cues (derived from nonverbal score labels)",
+                    "weight": 0.1,
+                    "metrics": [
+                        {
+                            "type": "EYE_CONTACT",
+                            "description": "Evaluates the candidate's eye contact during the interview (derived)",
+                            "weight": 1.0,
+                            "model": "gpt-4o"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "strategy_id": "strategy_1",
+            "name": "sub-metrics-llm-rules-aggregation",
+            "description": "Evaluate sub-metrics using LLM and aggregate to metrics and super-metrics using rules",
+            "super_metrics": [
+                {
+                    "type": "CLARITY",
+                    "description": "Evaluates how clear and understandable the candidate's responses are",
+                    "weight": 0.3,
+                    "metrics": [
+                        {
+                            "type": "CONCISENESS",
+                            "description": "Measures how concise and to-the-point the response is",
+                            "weight": 0.3,
+                            "model": "gpt-4o",
+                            "eval_system_prompt_path": "app/config/prompts/evaluation/v1/prompt_conciseness_eval_system_msg.md"
+                        },
+                        {
+                            "type": "LOGICAL_STRUCTURE",
+                            "description": "Assesses the logical flow and organization of the response",
+                            "weight": 0.3,
+                            "model": "gpt-4o",
+                            "eval_system_prompt_path": "app/config/prompts/evaluation/v1/prompt_logical_structure_eval_system_msg.md"
+                        },
+                        {
+                            "type": "AUDIENCE_APPROPRIATENESS",
+                            "description": "Evaluates how well the response is tailored to the intended audience",
+                            "weight": 0.1,
+                            "model": "gpt-4o",
+                            "eval_system_prompt_path": "app/config/prompts/evaluation/v1/prompt_audience_appropriate_eval_system_msg.md"
+                        }
+                    ]
+                },
+                {
+                    "type": "EVIDENCE",
+                    "description": "Evaluates the quality and relevance of evidence provided",
+                    "weight": 0.3,
+                    "metrics": [
+                        {
+                            "type": "EVIDENCE",
+                            "description": "Assesses the relevance and strength of evidence provided in responses",
+                            "weight": 1.0,
+                            "model": "gpt-4o",
+                            "eval_system_prompt_path": "app/config/prompts/evaluation/v1/prompt_evidence_eval_system_msg.md"
+                        }
+                    ]
+                },
+                {
+                    "type": "IMPACT",
+                    "description": "Evaluates the candidate's focus on delivering impactful results",
+                    "weight": 0.1,
+                    "metrics": [
+                        {
+                            "type": "QUANTIFIABLE_RESULTS",
+                            "description": "Measures the emphasis on delivering measurable and quantifiable outcomes",
+                            "weight": 0.4,
+                            "model": "gpt-4o",
+                            "eval_system_prompt_path": "app/config/prompts/evaluation/v1/prompt_quantifiable_results_eval_system_msg.md"
+                        },
+                        {
+                            "type": "PERSONAL_OWNERSHIP",
+                            "description": "Evaluates the candidate's sense of ownership and accountability for their work",
+                            "weight": 0.2,
+                            "model": "gpt-4o",
+                            "eval_system_prompt_path": "app/config/prompts/evaluation/v1/prompt_personal_ownership_eval_system_msg.md"
+                        },
+                        {
+                            "type": "GROWTH",
+                            "description": "Evaluates the candidate's ability to learn and adapt from experiences",
+                            "weight": 0.4,
+                            "model": "gpt-4o",
+                            "eval_system_prompt_path": "app/config/prompts/evaluation/v1/prompt_growth_eval_system_msg.md"
+                        }
+                    ]
+                },
+                {
+                    "type": "ENGAGEMENT",
+                    "description": "Evaluates the candidate's active engagement and listening skills",
+                    "weight": 0.1,
+                    "metrics": [
+                        {
+                            "type": "ACTIVE_LISTENING",
+                            "description": "Assesses the candidate's ability to actively listen and respond appropriately",
+                            "weight": 0.8,
+                            "model": "gpt-4o",
+                            "eval_system_prompt_path": "app/config/prompts/evaluation/v1/prompt_active_listening_eval_system_msg.md"
+                        },
+                        {
+                            "type": "COMPANY_RESEARCH",
+                            "description": "Evaluates the candidate's knowledge about the company and role",
+                            "weight": 0.2,
+                            "model": "gpt-4o",
+                            "eval_system_prompt_path": "app/config/prompts/evaluation/v1/prompt_company_research_eval_system_msg.md"
+                        }
+                    ]
+                },
+                {
+                    "type": "VERBAL_PERFORMANCE",
+                    "description": "Evaluates the candidate's verbal communication skills",
+                    "weight": 0.1,
+                    "metrics": [
+                        {
+                            "type": "PACE",
+                            "description": "Assesses the speed and rhythm of speech",
+                            "weight": 0.2,
+                            "model": "gpt-4o"
+                        },
+                        {
+                            "type": "INTONATION",
+                            "description": "Evaluates the variation in pitch and tone",
+                            "weight": 0.2,
+                            "model": "gpt-4o"
+                        },
+                        {
+                            "type": "VOLUME",
+                            "description": "Measures the loudness and clarity of speech",
+                            "weight": 0.2,
+                            "model": "gpt-4o"
+                        },
+                        {
+                            "type": "PRONOUNCIATION",
+                            "description": "Evaluates the clarity and accuracy of speech sounds",
+                            "weight": 0.2,
+                            "model": "gpt-4o"
+                        },
+                        {
+                            "type": "PAUSE",
+                            "description": "Evaluates the candidate's use of pauses and fillers",
+                            "weight": 0.2,
+                            "model": "gpt-4o"
+                        }
+                    ]
+                },
+                {
+                    "type": "VISUAL_PERFORMANCE",
+                    "description": "Evaluates the candidate's visual presentation and non-verbal cues",
+                    "weight": 0.1,
+                    "metrics": [
+                        {
+                            "type": "EYE_CONTACT",
+                            "description": "Evaluates the candidate's eye contact during the interview",
+                            "weight": 0.3,
+                            "model": "gpt-4o"
+                        },
+                        {
+                            "type": "FACIAL_EXPRESSION",
+                            "description": "Evaluates the candidate's facial expressions and their appropriateness",
+                            "weight": 0.3,
+                            "model": "gpt-4o"
+                        },
+                        {
+                            "type": "POSTURE",
+                            "description": "Assesses the candidate's posture and body language",
+                            "weight": 0.2,
+                            "model": "gpt-4o"
+                        },
+                        {
+                            "type": "PERSONAL_APPEARANCE",
+                            "description": "Evaluates the candidate's overall appearance and professionalism",
+                            "weight": 0.2,
+                            "model": "gpt-4o"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "strategy_id": "strategy_brief_lookup",
+            "name": "brief-lookup-strategy",
+            "description": "Evaluate using brief lookup method",
+            "super_metrics": [
+                {
+                    "type": "CLARITY",
+                    "description": "Evaluates how clear and understandable the candidate's responses are",
+                    "weight": 0.3,
+                    "metrics": [
+                        {
+                            "type": "CONCISENESS",
+                            "description": "Measures how concise and to-the-point the response is",
+                            "weight": 0.3,
+                            "model": "gpt-4o",
+                            "eval_system_prompt_path": "app/config/prompts/evaluation/v2/prompt_conciseness_eval_system_msg.md"
+                        },
+                        {
+                            "type": "LOGICAL_STRUCTURE",
+                            "description": "Assesses the logical flow and organization of the response",
+                            "weight": 0.3,
+                            "model": "gpt-4o",
+                            "eval_system_prompt_path": "app/config/prompts/evaluation/v2/prompt_logical_structure_eval_system_msg.md"
+                        },
+                        {
+                            "type": "AUDIENCE_APPROPRIATENESS",
+                            "description": "Evaluates how well the response is tailored to the intended audience",
+                            "weight": 0.1,
+                            "model": "gpt-4o",
+                            "eval_system_prompt_path": "app/config/prompts/evaluation/v2/prompt_audience_appropriate_eval_system_msg.md"
+                        }
+                    ]
+                },
+                {
+                    "type": "EVIDENCE",
+                    "description": "Evaluates the quality and relevance of evidence provided",
+                    "weight": 0.3,
+                    "metrics": [
+                        {
+                            "type": "EVIDENCE",
+                            "description": "Assesses the relevance and strength of evidence provided in responses",
+                            "weight": 1.0,
+                            "model": "gpt-4o",
+                            "eval_system_prompt_path": "app/config/prompts/evaluation/v2/prompt_evidence_eval_system_msg.md"
+                        }
+                    ]
+                },
+                {
+                    "type": "IMPACT",
+                    "description": "Evaluates the candidate's focus on delivering impactful results",
+                    "weight": 0.1,
+                    "metrics": [
+                        {
+                            "type": "QUANTIFIABLE_RESULTS",
+                            "description": "Measures the emphasis on delivering measurable and quantifiable outcomes",
+                            "weight": 0.4,
+                            "model": "gpt-4o",
+                            "eval_system_prompt_path": "app/config/prompts/evaluation/v2/prompt_quantifiable_results_eval_system_msg.md"
+                        },
+                        {
+                            "type": "PERSONAL_OWNERSHIP",
+                            "description": "Evaluates the candidate's sense of ownership and accountability for their work",
+                            "weight": 0.2,
+                            "model": "gpt-4o",
+                            "eval_system_prompt_path": "app/config/prompts/evaluation/v2/prompt_personal_ownership_eval_system_msg.md"
+                        },
+                        {
+                            "type": "GROWTH",
+                            "description": "Evaluates the candidate's ability to learn and adapt from experiences",
+                            "weight": 0.4,
+                            "model": "gpt-4o",
+                            "eval_system_prompt_path": "app/config/prompts/evaluation/v2/prompt_growth_eval_system_msg.md"
+                        }
+                    ]
+                },
+                {
+                    "type": "ENGAGEMENT",
+                    "description": "Evaluates the candidate's active engagement and listening skills",
+                    "weight": 0.1,
+                    "metrics": [
+                        {
+                            "type": "ACTIVE_LISTENING",
+                            "description": "Assesses the candidate's ability to actively listen and respond appropriately",
+                            "weight": 0.8,
+                            "model": "gpt-4o",
+                            "eval_system_prompt_path": "app/config/prompts/evaluation/v1/prompt_active_listening_eval_system_msg.md"
+                        },
+                        {
+                            "type": "COMPANY_RESEARCH",
+                            "description": "Evaluates the candidate's knowledge about the company and role",
+                            "weight": 0.2,
+                            "model": "gpt-4o",
+                            "eval_system_prompt_path": "app/config/prompts/evaluation/v2/prompt_company_research_eval_system_msg.md"
+                        }
+                    ]
+                },
+                {
+                    "type": "VERBAL_PERFORMANCE",
+                    "description": "Evaluates the candidate's verbal communication skills",
+                    "weight": 0.1,
+                    "metrics": [
+                        {
+                            "type": "PACE",
+                            "description": "Assesses the speed and rhythm of speech",
+                            "weight": 0.2,
+                            "model": "gpt-4o"
+                        },
+                        {
+                            "type": "INTONATION",
+                            "description": "Evaluates the variation in pitch and tone",
+                            "weight": 0.2,
+                            "model": "gpt-4o"
+                        },
+                        {
+                            "type": "VOLUME",
+                            "description": "Measures the loudness and clarity of speech",
+                            "weight": 0.2,
+                            "model": "gpt-4o"
+                        },
+                        {
+                            "type": "PRONOUNCIATION",
+                            "description": "Evaluates the clarity and accuracy of speech sounds",
+                            "weight": 0.2,
+                            "model": "gpt-4o"
+                        },
+                        {
+                            "type": "PAUSE",
+                            "description": "Evaluates the candidate's use of pauses and fillers",
+                            "weight": 0.2,
+                            "model": "gpt-4o"
+                        }
+                    ]
+                },
+                {
+                    "type": "VISUAL_PERFORMANCE",
+                    "description": "Evaluates the candidate's visual presentation and non-verbal cues",
+                    "weight": 0.1,
+                    "metrics": [
+                        {
+                            "type": "EYE_CONTACT",
+                            "description": "Evaluates the candidate's eye contact during the interview",
+                            "weight": 0.3,
+                            "model": "gpt-4o"
+                        },
+                        {
+                            "type": "FACIAL_EXPRESSION",
+                            "description": "Evaluates the candidate's facial expressions and their appropriateness",
+                            "weight": 0.3,
+                            "model": "gpt-4o"
+                        },
+                        {
+                            "type": "POSTURE",
+                            "description": "Assesses the candidate's posture and body language",
+                            "weight": 0.2,
+                            "model": "gpt-4o"
+                        },
+                        {
+                            "type": "PERSONAL_APPEARANCE",
+                            "description": "Evaluates the candidate's overall appearance and professionalism",
+                            "weight": 0.2,
+                            "model": "gpt-4o"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

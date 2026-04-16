@@ -1,0 +1,149 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "career-face-backend"
+version = "1.0.0"
+description = "CareerFace Interview API Backend"
+authors = [
+    {name = "CareerFace Team"}
+]
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+dependencies = [
+    # FastAPI核心框架
+    "fastapi==0.109.0",
+    "uvicorn[standard]==0.27.0",
+    "python-multipart==0.0.6",
+    # 数据库
+    "sqlalchemy==2.0.25",
+    "alembic==1.13.1",
+    "psycopg2-binary==2.9.9",
+    "asyncpg==0.29.0",
+    # Redis缓存
+    "redis==5.0.1",
+    "aioredis==2.0.1",
+    # 认证和安全
+    "python-jose[cryptography]==3.3.0",
+    "passlib[bcrypt]==1.7.4",
+    "python-dotenv==1.0.0",
+    "pydantic==2.7.4",
+    "pydantic-settings==2.4.0",
+    "pydantic[email]==2.7.4",
+    "supabase==2.22.0",
+    "pyjwt==2.8.0",
+    "cryptography==42.0.0",
+    # AI服务
+    "openai==1.68.2",
+    "anthropic==0.52.0",
+    "litellm==1.51.0",
+    # LangChain
+    "langchain==0.3.25",
+    "langchain-core==0.3.64",
+    "langchain-community==0.3.23",
+    "langchain-openai==0.3.21",
+    "langchain-anthropic==0.3.15",
+    "langgraph==0.2.75",
+    # 语音处理
+    "librosa==0.10.1",
+    "soundfile==0.12.1",
+    "pydub==0.25.1",
+    # 工具库
+    "python-dateutil==2.8.2",
+    "aiofiles==23.2.1",
+    "pillow==10.2.0",
+    "aiohttp==3.9.1",
+    "websockets==12.0",
+    "opencv-python==4.10.0.84",
+    # 监控和日志
+    "structlog==24.1.0",
+    "prometheus-client==0.19.0",
+    "snowflake-id>=1.0.2",
+    "greenlet>=3.2.4",
+    "google-cloud-texttospeech>=2.33.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["app"]
+
+[project.optional-dependencies]
+dev = [
+    # 测试
+    "pytest==7.4.4",
+    "pytest-asyncio==0.23.3",
+    "pytest-cov==4.1.0",
+    
+    # 代码质量
+    "black",
+    "isort",
+    "flake8",
+    "mypy",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=7.4.4",
+    "pytest-asyncio>=0.23.3",
+    "pytest-cov>=4.1.0",
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "flake8>=6.0.0",
+    "mypy>=1.0.0",
+]
+
+[tool.black]
+line-length = 88
+target-version = ['py311']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  | migrations
+)/
+'''
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 88
+known_first_party = ["app"]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+exclude = [
+    "alembic/",
+    "migrations/",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "--strict-markers",
+    "--strict-config",
+    "--cov=app",
+    "--cov-report=term-missing",
+]
+asyncio_mode = "auto"

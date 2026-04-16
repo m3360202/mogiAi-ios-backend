@@ -1,0 +1,249 @@
+{
+  "interviewFrameworks": [
+    {
+      "category": "Behavioral & Experience",
+      "methods": [
+        {
+          "methodName": "STAR",
+          "description": "Situation, Task, Action, Result",
+          "bestFor": "Behavioral questions about past experiences"
+        },
+        {
+          "methodName": "CAR",
+          "description": "Challenge, Action, Result",
+          "bestFor": "Overcoming difficulties and challenges"
+        },
+        {
+          "methodName": "SOAR",
+          "description": "Situation, Obstacle, Action, Result",
+          "bestFor": "Focusing on obstacles overcome"
+        },
+        {
+          "methodName": "SAO",
+          "description": "Situation, Action, Outcome",
+          "bestFor": "Concise experience sharing"
+        },
+        {
+          "methodName": "SHARE",
+          "description": "Situation, Hindrance, Action, Result, Evaluation",
+          "bestFor": "Detailed reflection with lessons learned"
+        }
+      ]
+    },
+    {
+      "category": "Problem Solving & Case Interviews",
+      "methods": [
+        {
+          "methodName": "MECE",
+          "description": "Mutually Exclusive, Collectively Exhaustive",
+          "bestFor": "Structuring problems logically (consulting)"
+        },
+        {
+          "methodName": "Issue Tree",
+          "description": "Breaking down problems into components",
+          "bestFor": "Complex problem decomposition"
+        },
+        {
+          "methodName": "Hypothesis-Driven",
+          "description": "Start with hypothesis, then test",
+          "bestFor": "Consulting and analytical roles"
+        },
+        {
+          "methodName": "5 Whys",
+          "description": "Ask 'why' repeatedly to find root cause",
+          "bestFor": "Root cause analysis questions"
+        },
+        {
+          "methodName": "PDCA",
+          "description": "Plan, Do, Check, Act",
+          "bestFor": "Process improvement questions"
+        },
+        {
+          "methodName": "DMAIC",
+          "description": "Define, Measure, Analyze, Improve, Control",
+          "bestFor": "Six Sigma and quality management roles"
+        }
+      ]
+    },
+    {
+      "category": "Communication & Persuasion",
+      "methods": [
+        {
+          "methodName": "PREP",
+          "description": "Point, Reason, Example, Point",
+          "bestFor": "Clear opinion expression"
+        },
+        {
+          "methodName": "PEEL",
+          "description": "Point, Evidence, Explain, Link",
+          "bestFor": "Academic or analytical arguments"
+        },
+        {
+          "methodName": "AIDA",
+          "description": "Attention, Interest, Desire, Action",
+          "bestFor": "Sales and marketing pitches"
+        },
+        {
+          "methodName": "3C's",
+          "description": "Clear, Concise, Compelling",
+          "bestFor": "All communication questions"
+        },
+        {
+          "methodName": "What-Why-How",
+          "description": "What it is, Why it matters, How to do it",
+          "bestFor": "Explaining concepts or processes"
+        }
+      ]
+    },
+    {
+      "category": "Strategy & Business Analysis",
+      "methods": [
+        {
+          "methodName": "SWOT",
+          "description": "Strengths, Weaknesses, Opportunities, Threats",
+          "bestFor": "Strategic analysis questions"
+        },
+        {
+          "methodName": "PESTLE",
+          "description": "Political, Economic, Social, Technological, Legal, Environmental",
+          "bestFor": "Macro-environment analysis"
+        },
+        {
+          "methodName": "Porter's Five Forces",
+          "description": "Industry competition analysis framework",
+          "bestFor": "Market and competition questions"
+        },
+        {
+          "methodName": "4P's",
+          "description": "Product, Price, Place, Promotion",
+          "bestFor": "Marketing strategy questions"
+        },
+        {
+          "methodName": "BCG Matrix",
+          "description": "Stars, Cash Cows, Question Marks, Dogs",
+          "bestFor": "Product portfolio questions"
+        },
+        {
+          "methodName": "Value Chain",
+          "description": "Primary and support activities analysis",
+          "bestFor": "Operations and value creation questions"
+        }
+      ]
+    },
+    {
+      "category": "Self-Reflection & Career",
+      "methods": [
+        {
+          "methodName": "SWOT Self-Analysis",
+          "description": "Personal Strengths, Weaknesses, Opportunities, Threats",
+          "bestFor": "Self-assessment questions"
+        },
+        {
+          "methodName": "IKIGAI",
+          "description": "What you love, good at, world needs, paid for",
+          "bestFor": "Career motivation and purpose questions"
+        },
+        {
+          "methodName": "GROW",
+          "description": "Goal, Reality, Options, Will",
+          "bestFor": "Career planning and goal questions"
+        },
+        {
+          "methodName": "Start-Stop-Continue",
+          "description": "What to start, stop, continue doing",
+          "bestFor": "Self-improvement and feedback questions"
+        }
+      ]
+    },
+    {
+      "category": "Project & Situation Management",
+      "methods": [
+        {
+          "methodName": "What-So What-Now What",
+          "description": "Reflection and forward planning",
+          "bestFor": "Project debrief and learning questions"
+        },
+        {
+          "methodName": "RACI Matrix",
+          "description": "Responsible, Accountable, Consulted, Informed",
+          "bestFor": "Team coordination and responsibility questions"
+        },
+        {
+          "methodName": "SMART Goals",
+          "description": "Specific, Measurable, Achievable, Relevant, Time-bound",
+          "bestFor": "Goal-setting and planning questions"
+        },
+        {
+          "methodName": "MoSCoW",
+          "description": "Must have, Should have, Could have, Won't have",
+          "bestFor": "Priority setting questions"
+        },
+        {
+          "methodName": "Agile/Scrum",
+          "description": "Sprints, backlog, retrospectives",
+          "bestFor": "Tech and project management roles"
+        }
+      ]
+    },
+    {
+      "category": "Decision Making",
+      "methods": [
+        {
+          "methodName": "Pros-Cons",
+          "description": "Advantages and disadvantages analysis",
+          "bestFor": "Simple decision questions"
+        },
+        {
+          "methodName": "Decision Matrix",
+          "description": "Weighted criteria evaluation",
+          "bestFor": "Complex multi-factor decisions"
+        },
+        {
+          "methodName": "Cost-Benefit",
+          "description": "Costs vs benefits analysis",
+          "bestFor": "Financial and investment decisions"
+        },
+        {
+          "methodName": "First Principles",
+          "description": "Break down to fundamental truths",
+          "bestFor": "Innovative and strategic thinking"
+        }
+      ]
+    },
+    {
+      "category": "Leadership & Management",
+      "methods": [
+        {
+          "methodName": "Situational Leadership",
+          "description": "Directing, Coaching, Supporting, Delegating",
+          "bestFor": "Leadership style questions"
+        },
+        {
+          "methodName": "Feedback Sandwich",
+          "description": "Positive, constructive, positive",
+          "bestFor": "Giving feedback questions"
+        },
+        {
+          "methodName": "Delegation Framework",
+          "description": "What to delegate, to whom, how",
+          "bestFor": "Team management questions"
+        },
+        {
+          "methodName": "Conflict Resolution",
+          "description": "Identify, understand, resolve, follow-up",
+          "bestFor": "Team conflict questions"
+        }
+      ]
+    }
+  ],
+  "quickSelectionGuide": {
+    "For behavioral questions": ["STAR", "CAR", "SOAR"],
+    "For case interviews": ["MECE", "Issue Tree", "Hypothesis-Driven"],
+    "For strategy questions": ["SWOT", "Porter's Five Forces", "4P's"],
+    "For communication": ["PREP", "PEEL", "3C's"],
+    "For self-assessment": ["SWOT Self-Analysis", "IKIGAI", "GROW"],
+    "For project management": ["What-So What-Now What", "SMART", "RACI"],
+    "For decision making": ["Pros-Cons", "Decision Matrix", "Cost-Benefit"]
+  }
+}
+ 
